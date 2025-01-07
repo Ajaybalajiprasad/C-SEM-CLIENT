@@ -30,7 +30,7 @@ export default function Codes() {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      if ((e.altKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         searchInputRef.current?.focus();
       }
@@ -94,7 +94,7 @@ export default function Codes() {
               className="w-full p-3 rounded-lg shadow-lg border border-gray-600 bg-gray-700 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400"
             />
             <span className="hidden lg:block text-sm text-gray-500 mt-1">
-              Press Ctrl/Cmd + K to focus search
+              Press Alt+K to focus search
             </span>
           </div>
         </div>
