@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { MdContentCopy } from "react-icons/md";
+import { MdContentCopy, MdShare } from "react-icons/md";
 
 interface Snippet {
   id: string;
@@ -53,7 +53,7 @@ export default function Codes() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white">
-      <div className="container mx-auto px-6 py-8">
+      <div className="container mx-auto py-8">
         <h1 className="text-5xl font-bold text-center mb-6 text-indigo-500">
           C Exam Codes
         </h1>
@@ -63,7 +63,7 @@ export default function Codes() {
           Made with ❤️ By Ajay
         </p>
         {/* Sticky search bar */}
-        <div className="sticky top-0 z-50 mt-1 lg:fixed lg:right-4 lg:top-4 lg:w-1/4">
+        <div className="sticky px-6 top-0 z-50 mt-1 lg:fixed lg:right-4 lg:top-4 lg:w-1/4">
           <div className="max-w-2xl mx-auto lg:mx-0">
             <input
               ref={searchInputRef}
@@ -71,7 +71,7 @@ export default function Codes() {
               placeholder="Search Codes by Question (or) Title..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full p-4 rounded-lg shadow-lg border border-gray-600 bg-gray-700 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              className="w-full p-2 rounded-lg shadow-lg border border-gray-600 bg-gray-700 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400"
             />
             <span className="hidden lg:block text-sm text-gray-500 mt-1">
               Press Windows + K to focus search
@@ -87,29 +87,57 @@ export default function Codes() {
             {error}
           </p>
         ) : (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-            {filteredSnippets.map((snippet) => (
-              <li
-                key={snippet.id}
-                className="p-6 bg-gray-800 text-gray-200 rounded-lg shadow-lg"
-              >
+<ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 mt-10">
+  {filteredSnippets.map((snippet) => (
+    <li
+      key={snippet.id}
+      className="p-6 bg-gray-800 text-gray-200 rounded-lg shadow-lg"
+    >
                 <div className="flex justify-between items-center mb-3">
-                  <h2 className="text-xl font-semibold text-indigo-400 mb-3">
+                  <h2 className="text-xl font-semibold text-indigo-400">
                     {snippet.id
                       .replace(/_/g, " ")
                       .split(".")
                       .slice(0, -1)
                       .join(".")}
                   </h2>
-                  <button
-                    onClick={() =>
-                      navigator.clipboard.writeText(snippet.content)
-                    }
-                    className="text-gray-400 hover:text-gray-200 focus:outline-none"
-                    aria-label="Copy code"
-                  >
-                    <MdContentCopy size={20} />
-                  </button>
+                  <div className="lg:flex space-x-2">
+                    <button
+                      onClick={() =>
+                        navigator.clipboard.writeText(snippet.content)
+                      }
+                      className="text-gray-400 hover:text-gray-200 focus:outline-none"
+                      aria-label="Copy code"
+                    >
+                      <MdContentCopy size={20} />
+                    </button>
+                    <button
+                      onClick={() => {
+                        if (navigator.share) {
+                          navigator
+                            .share({
+                              title: "C Exam Code Snippet",
+                              text: snippet.content,
+                              url: window.location.href,
+                            })
+                            .catch((error) =>
+                              console.error("Error sharing:", error)
+                            );
+                        } else {
+                          navigator.clipboard
+                            .writeText(window.location.href)
+                            .then(() => alert("Link copied to clipboard"))
+                            .catch((error) =>
+                              console.error("Error copying link:", error)
+                            );
+                        }
+                      }}
+                      className="text-gray-400 hover:text-gray-200 focus:outline-none"
+                      aria-label="Share code"
+                    >
+                      <MdShare size={20} />
+                    </button>
+                  </div>
                 </div>
                 <SyntaxHighlighter
                   language="c"
