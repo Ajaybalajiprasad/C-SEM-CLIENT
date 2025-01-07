@@ -18,11 +18,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
-      <Script
-        defer
-        data-domain="codepanuvomm.vercel.app"
-        src="https://plausible.io/js/script.outbound-links.js"
-      />
     </html>
   );
 }
