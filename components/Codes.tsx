@@ -4,6 +4,7 @@ import axios from "axios";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { MdContentCopy, MdShare } from "react-icons/md";
+import Link from "next/link";
 
 interface Snippet {
   id: string;
@@ -82,6 +83,15 @@ export default function Codes() {
           <br />
           Made with ❤️ By Ajay
         </p>
+        <div className="text-center mb-8">
+          <Link
+            href="/important"
+            className="inline-block px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg 
+                       shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75"
+          >
+            Go to Important Topics
+          </Link>
+        </div>
         {/* Sticky search bar */}
         <div className="sticky px-6 top-0 z-50 mt-1 lg:fixed lg:right-4 lg:top-4 lg:w-1/4">
           <div className="max-w-2xl mx-auto lg:mx-0">
