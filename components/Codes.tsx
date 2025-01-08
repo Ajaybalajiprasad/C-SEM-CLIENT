@@ -138,7 +138,7 @@ export default function Codes() {
                           if (navigator.share) {
                             navigator
                               .share({
-                                title: "C Exam Code Snippet",
+                                title: snippet.id,
                                 text: snippet.content,
                                 url: window.location.href,
                               })
