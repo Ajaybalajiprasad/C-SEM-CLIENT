@@ -1,0 +1,105 @@
+{
+  "1": {
+    "explanation": "Linear Search is a simple algorithm that checks every element in the array sequentially until the desired element is found or the end of the array is reached. It works on both sorted and unsorted arrays but is less efficient for large datasets.",
+    "code": "#include <stdio.h>\nint linearSearch(int arr[], int n, int key) {\n    for (int i = 0; i < n; i++) {\n        if (arr[i] == key) return i;\n    }\n    return -1;\n}\nint main() {\n    int arr[] = {10, 20, 30, 40, 50}, key = 30;\n    int pos = linearSearch(arr, 5, key);\n    printf(pos == -1 ? \"Not Found\\n\" : \"Found at index %d\\n\", pos);\n    return 0;\n}"
+  },
+  "2": {
+    "explanation": "Binary Search is an efficient algorithm to find an element in a sorted array by repeatedly dividing the search interval in half. It has a time complexity of O(log n).",
+    "code": "#include <stdio.h>\nint binarySearch(int arr[], int n, int key) {\n    int low = 0, high = n - 1;\n    while (low <= high) {\n        int mid = low + (high - low) / 2;\n        if (arr[mid] == key) return mid;\n        if (arr[mid] < key) low = mid + 1;\n        else high = mid - 1;\n    }\n    return -1;\n}\nint main() {\n    int arr[] = {10, 20, 30, 40, 50}, key = 40;\n    int pos = binarySearch(arr, 5, key);\n    printf(pos == -1 ? \"Not Found\\n\" : \"Found at index %d\\n\", pos);\n    return 0;\n}"
+  },
+  "3": {
+    "explanation": "Min Heap and Max Heap are binary trees where the parent node is less than (Min Heap) or greater than (Max Heap) its children. Heaps are used in priority queues and sorting algorithms like Heap Sort.",
+    "code": "#include <stdio.h>\nvoid heapify(int arr[], int n, int i) {\n    int largest = i, left = 2 * i + 1, right = 2 * i + 2;\n    if (left < n && arr[left] > arr[largest]) largest = left;\n    if (right < n && arr[right] > arr[largest]) largest = right;\n    if (largest != i) {\n        int temp = arr[i]; arr[i] = arr[largest]; arr[largest] = temp;\n        heapify(arr, n, largest);\n    }\n}\nvoid buildMaxHeap(int arr[], int n) {\n    for (int i = n / 2 - 1; i >= 0; i--) heapify(arr, n, i);\n}\nint main() {\n    int arr[] = {3, 5, 9, 6, 8}, n = 5;\n    buildMaxHeap(arr, n);\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    return 0;\n}"
+  },
+  "4": {
+    "explanation": "Insertion Sort is a simple sorting algorithm that builds the sorted array one element at a time. It is efficient for small datasets and has a time complexity of O(n^2).",
+    "code": "#include <stdio.h>\nvoid insertionSort(int arr[], int n) {\n    for (int i = 1; i < n; i++) {\n        int key = arr[i], j = i - 1;\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j];\n            j--;\n        }\n        arr[j + 1] = key;\n    }\n}\nint main() {\n    int arr[] = {5, 3, 4, 1, 2}, n = 5;\n    insertionSort(arr, n);\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    return 0;\n}"
+  },
+  "5": {
+    "explanation": "Quick Sort is a divide-and-conquer algorithm that partitions an array into two halves and sorts them recursively. It has an average time complexity of O(n log n).",
+    "code": "#include <stdio.h>\nvoid quickSort(int arr[], int low, int high) {\n    if (low < high) {\n        int pivot = arr[high], i = low - 1;\n        for (int j = low; j < high; j++) {\n            if (arr[j] < pivot) {\n                int temp = arr[++i]; arr[i] = arr[j]; arr[j] = temp;\n            }\n        }\n        int temp = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = temp;\n        quickSort(arr, low, i);\n        quickSort(arr, i + 2, high);\n    }\n}\nint main() {\n    int arr[] = {4, 2, 6, 1, 5}, n = 5;\n    quickSort(arr, 0, n - 1);\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    return 0;\n}"
+  },
+  "6": {
+    "explanation": "Merge Sort is a divide-and-conquer algorithm that splits the array into halves, sorts each half recursively, and then merges them. It has a time complexity of O(n log n).",
+    "code": "#include <stdio.h>\nvoid merge(int arr[], int l, int m, int r) {\n    int n1 = m - l + 1, n2 = r - m, L[n1], R[n2];\n    for (int i = 0; i < n1; i++) L[i] = arr[l + i];\n    for (int i = 0; i < n2; i++) R[i] = arr[m + 1 + i];\n    int i = 0, j = 0, k = l;\n    while (i < n1 && j < n2) arr[k++] = (L[i] <= R[j]) ? L[i++] : R[j++];\n    while (i < n1) arr[k++] = L[i++];\n    while (j < n2) arr[k++] = R[j++];\n}\nvoid mergeSort(int arr[], int l, int r) {\n    if (l < r) {\n        int m = l + (r - l) / 2;\n        mergeSort(arr, l, m);\n        mergeSort(arr, m + 1, r);\n        merge(arr, l, m, r);\n    }\n}\nint main() {\n    int arr[] = {7, 2, 5, 3, 1}, n = 5;\n    mergeSort(arr, 0, n - 1);\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    return 0;\n}"
+  },
+
+  "7": {
+    "explanation": "Single and Multi-Dimensional Arrays are data structures that store elements of the same type in contiguous memory locations. Single-Dimensional Arrays act like a list, and elements are accessed with one index. Multi-Dimensional Arrays represent grids (e.g., 2D arrays) and require multiple indices for element access.",
+    "code": "#include <stdio.h>\nint main() {\n    int arr1[3] = {1, 2, 3};\n    printf(\"1D Array: \");\n    for (int i = 0; i < 3; i++) printf(\"%d \", arr1[i]);\n    int arr2[2][2] = {{1, 2}, {3, 4}};\n    printf(\"\\n2D Array:\\n\");\n    for (int i = 0; i < 2; i++) {\n        for (int j = 0; j < 2; j++) printf(\"%d \", arr2[i][j]);\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+  },
+  "8": {
+    "explanation": "Iterative and Recursive Functions are approaches to solve problems. Iterative functions use loops like for and while to repeat tasks, while Recursive functions call themselves and solve problems by breaking them into smaller sub-problems until a base case is met.",
+    "code": "#include <stdio.h>\nint factorialIterative(int n) {\n    int fact = 1;\n    for (int i = 1; i <= n; i++) fact *= i;\n    return fact;\n}\nint factorialRecursive(int n) {\n    return n == 0 ? 1 : n * factorialRecursive(n - 1);\n}\nint main() {\n    printf(\"Iterative Factorial: %d\\n\", factorialIterative(5));\n    printf(\"Recursive Factorial: %d\\n\", factorialRecursive(5));\n    return 0;\n}"
+  },
+  "9": {
+    "explanation": "Conditional Statements like if, else, and else if allow programs to make decisions based on conditions. For example, they can execute different blocks of code depending on whether the condition is true or false.",
+    "code": "#include <stdio.h>\nint main() {\n    int num = 10;\n    if (num > 0) {\n        printf(\"Positive\\n\");\n    } else if (num < 0) {\n        printf(\"Negative\\n\");\n    } else {\n        printf(\"Zero\\n\");\n    }\n    return 0;\n}"
+  },
+  "10": {
+    "explanation": "Control Statements like for and while loops are used to perform repetitive tasks. The for loop is often used when the number of iterations is known, and the while loop is used when the iterations depend on a condition.",
+    "code": "#include <stdio.h>\nint main() {\n    printf(\"For Loop:\\n\");\n    for (int i = 1; i <= 5; i++) printf(\"%d \", i);\n    printf(\"\\nWhile Loop:\\n\");\n    int j = 1;\n    while (j <= 5) {\n        printf(\"%d \", j);\n        j++;\n    }\n    return 0;\n}"
+  },
+  "11": {
+    "explanation": "Data Types define the type of data a variable can store. Common data types in C include int (4 bytes), float (4 bytes), double (8 bytes), and char (1 byte). These types are used to perform various operations.",
+    "code": "#include <stdio.h>\nint main() {\n    int a = 10; float b = 3.14; char c = 'X';\n    printf(\"Int: %d (4 bytes)\\n\", a);\n    printf(\"Float: %.2f (4 bytes)\\n\", b);\n    printf(\"Char: %c (1 byte)\\n\", c);\n    return 0;\n}"
+  },
+  "12": {
+    "explanation": "Functions are reusable blocks of code that perform specific tasks. They can take inputs (parameters), perform actions, and return outputs. Functions promote modular programming and code reusability.",
+    "code": "#include <stdio.h>\nint add(int a, int b) {\n    return a + b;\n}\nint main() {\n    int sum = add(5, 3);\n    printf(\"Sum: %d\\n\", sum);\n    return 0;\n}"
+  },
+  "13": {
+    "explanation": "Preprocessor Directives are lines included in a C program, starting with a hash sign (#). They are processed before the actual compilation begins. Common examples include `#include` for including files and `#define` for defining constants or macros.",
+    "code": "#include <stdio.h> // Includes standard input/output functions\n#define PI 3.14 // Defines a constant value\nint main() {\n    printf(\"Value of PI: %.2f\\n\", PI);\n    return 0;\n}"
+  },
+  "14": {
+    "explanation": "File Handling in C enables reading from and writing to files using file pointers. Common functions include `fopen()`, `fclose()`, `fscanf()`, and `fprintf()`.",
+    "code": "#include <stdio.h>\nint main() {\n    FILE *file = fopen(\"example.txt\", \"w\"); // Open file for writing\n    if (file) {\n        fprintf(file, \"Hello, File Handling!\\n\"); // Write to file\n        fclose(file); // Close file\n    }\n    file = fopen(\"example.txt\", \"r\"); // Open file for reading\n    char buffer[50];\n    if (file) {\n        fscanf(file, \"%[^\n]\", buffer);\n        printf(\"Read: %s\\n\", buffer);\n        fclose(file);\n    }\n    return 0;\n}"
+  },
+  "15": {
+    "explanation": "Structures and Unions are user-defined data types. Structures group multiple variables of different types, while Unions share the same memory space for all members, allowing efficient memory usage but only one active member at a time.",
+    "code": "#include <stdio.h>\ntypedef struct {\n    char name[20];\n    int age;\n} Person;\ntypedef union {\n    int id;\n    float salary;\n} Data;\nint main() {\n    Person p = {\"Alice\", 25};\n    Data d; d.id = 101;\n    printf(\"Name: %s, Age: %d\\n\", p.name, p.age);\n    d.salary = 5500.50;\n    printf(\"Salary: %.2f\\n\", d.salary);\n    return 0;\n}"
+  },
+  "16": {
+    "explanation": "Pointers are variables that store memory addresses. They enable dynamic memory allocation, efficient array manipulation, and access to resources like hardware registers.",
+    "code": "#include <stdio.h>\nint main() {\n    int x = 10, *ptr = &x;\n    printf(\"Value: %d, Address: %p\\n\", x, (void*)ptr);\n    *ptr = 20; // Modify value using pointer\n    printf(\"Modified Value: %d\\n\", x);\n    return 0;\n}"
+  },
+  "19": {
+    "explanation": "A Linked List is a linear data structure consisting of nodes where each node contains data and a pointer to the next node. It allows dynamic memory allocation and efficient insertion/deletion.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node {\n    int data;\n    struct Node *next;\n} Node;\nvoid insert(Node **head, int value) {\n    Node *newNode = (Node *)malloc(sizeof(Node));\n    newNode->data = value; newNode->next = *head;\n    *head = newNode;\n}\nvoid printList(Node *head) {\n    while (head) { printf(\"%d -> \", head->data); head = head->next; }\n    printf(\"NULL\\n\");\n}\nint main() {\n    Node *head = NULL;\n    insert(&head, 10); insert(&head, 20);\n    printList(head);\n    return 0;\n}"
+  },
+  "20": {
+    "explanation": "Stacks are linear data structures that follow the Last In First Out (LIFO) principle. They are used for expression evaluation (infix to postfix) and other algorithms. A stack can be implemented using arrays or linked lists.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node {\n    int data;\n    struct Node *next;\n} Node;\nvoid push(Node **top, int value) {\n    Node *newNode = (Node *)malloc(sizeof(Node));\n    newNode->data = value; newNode->next = *top; *top = newNode;\n}\nint pop(Node **top) {\n    if (!*top) return -1;\n    Node *temp = *top; int value = temp->data;\n    *top = temp->next; free(temp); return value;\n}\nint main() {\n    Node *stack = NULL;\n    push(&stack, 10); push(&stack, 20);\n    printf(\"Popped: %d\\n\", pop(&stack));\n    return 0;\n}"
+  },
+  "21": {
+    "explanation": "A Queue is a linear data structure that follows the First In First Out (FIFO) principle. It is implemented using arrays or linked lists. The ADT defines operations like enqueue, dequeue, and peek.",
+    "code": "#include <stdio.h>\n#define SIZE 5\nint queue[SIZE], front = -1, rear = -1;\nvoid enqueue(int value) {\n    if (rear == SIZE - 1) return;\n    if (front == -1) front = 0;\n    queue[++rear] = value;\n}\nint dequeue() {\n    if (front == -1 || front > rear) return -1;\n    return queue[front++];\n}\nint main() {\n    enqueue(10); enqueue(20);\n    printf(\"Dequeued: %d\\n\", dequeue());\n    return 0;\n}"
+  },
+  "22": {
+    "explanation": "A Doubly Linked List is a type of linked list where each node has pointers to both the previous and the next node. This enables traversal in both directions.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node {\n    int data;\n    struct Node *prev, *next;\n} Node;\nvoid insert(Node **head, int value) {\n    Node *newNode = (Node *)malloc(sizeof(Node));\n    newNode->data = value; newNode->next = *head; newNode->prev = NULL;\n    if (*head) (*head)->prev = newNode;\n    *head = newNode;\n}\nvoid printList(Node *head) {\n    while (head) { printf(\"%d <-> \", head->data); head = head->next; }\n    printf(\"NULL\\n\");\n}\nint main() {\n    Node *head = NULL;\n    insert(&head, 10); insert(&head, 20);\n    printList(head);\n    return 0;\n}"
+  },
+  "23": {
+    "explanation": "Abstract Data Types (ADTs) are a way of defining a data structure by its behavior (operations) rather than its implementation. Examples include Stack, Queue, and Linked List.",
+    "code": "// Example: Stack ADT using arrays\n#include <stdio.h>\n#define SIZE 5\nint stack[SIZE], top = -1;\nvoid push(int value) {\n    if (top < SIZE - 1) stack[++top] = value;\n}\nint pop() {\n    return (top >= 0) ? stack[top--] : -1;\n}\nint main() {\n    push(10); push(20);\n    printf(\"Popped: %d\\n\", pop());\n    return 0;\n}"
+  },
+  "24": {
+    "explanation": "A Binary Tree is a hierarchical data structure where each node has at most two children: left and right. It is used for various applications like searching, sorting, and hierarchical representation.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node {\n    int data;\n    struct Node *left, *right;\n} Node;\nNode* createNode(int value) {\n    Node* newNode = (Node*)malloc(sizeof(Node));\n    newNode->data = value;\n    newNode->left = newNode->right = NULL;\n    return newNode;\n}\nint main() {\n    Node* root = createNode(10);\n    root->left = createNode(20);\n    root->right = createNode(30);\n    printf(\"Root: %d\\n\", root->data);\n    return 0;\n}"
+  },
+  "25": {
+    "explanation": "A Binary Search Tree (BST) is a binary tree where the left child contains values smaller than the parent, and the right child contains values larger. BST supports efficient searching, insertion, and deletion.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node {\n    int data;\n    struct Node *left, *right;\n} Node;\nNode* insert(Node* root, int value) {\n    if (!root) {\n        root = (Node*)malloc(sizeof(Node));\n        root->data = value; root->left = root->right = NULL;\n    } else if (value < root->data) root->left = insert(root->left, value);\n    else root->right = insert(root->right, value);\n    return root;\n}\nint main() {\n    Node* root = NULL;\n    root = insert(root, 10);\n    insert(root, 20); insert(root, 5);\n    printf(\"Root: %d\\n\", root->data);\n    return 0;\n}"
+  },
+  "26": {
+    "explanation": "Hashing is a method of mapping keys to indices in a hash table. Techniques like Linear Probing, Double Hashing, and Rehashing handle collisions in hash tables.",
+    "code": "#include <stdio.h>\n#define SIZE 10\nint hashTable[SIZE];\nvoid init() { for (int i = 0; i < SIZE; i++) hashTable[i] = -1; }\nint hashFunc(int key) { return key % SIZE; }\nvoid insert(int key) {\n    int index = hashFunc(key);\n    while (hashTable[index] != -1)\n        index = (index + 1) % SIZE; // Linear Probing\n    hashTable[index] = key;\n}\nint main() {\n    init(); insert(10); insert(20);\n    for (int i = 0; i < SIZE; i++) printf(\"%d \", hashTable[i]);\n    return 0;\n}"
+  },
+  "28": {
+    "explanation": "Tree Traversals are methods of visiting nodes in a tree. Inorder (Left, Root, Right), Preorder (Root, Left, Right), and Postorder (Left, Right, Root) are common traversals used in binary trees.",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\ntypedef struct Node {\n    int data;\n    struct Node *left, *right;\n} Node;\nvoid inorder(Node *root) {\n    if (root) { inorder(root->left); printf(\"%d \", root->data); inorder(root->right); }\n}\nNode* createNode(int value) {\n    Node* newNode = (Node*)malloc(sizeof(Node));\n    newNode->data = value; newNode->left = newNode->right = NULL;\n    return newNode;\n}\nint main() {\n    Node* root = createNode(10);\n    root->left = createNode(20);\n    root->right = createNode(30);\n    inorder(root); // Output: 20 10 30\n    return 0;\n}"
+  }
+}
+
+  

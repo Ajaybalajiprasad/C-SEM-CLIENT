@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { predefinedQuestions, units } from "@/utils/questions";
 import { ChecklistItem } from "@/utils/types";
 
@@ -141,7 +142,9 @@ const CheckList: React.FC = () => {
                       <div className={`flex-1 text-sm sm:text-base ${
                         item.completed ? "line-through text-gray-500" : "text-white"
                       }`}>
-                        <span className="break-words">{item.text}</span>
+                        <Link href={`/notes/${item.id}`} 
+                              className="break-words">{item.text}
+                        </Link>
                         {item.important && (
                           <span className="inline-block ml-2 px-2 py-0.5 text-xs bg-indigo-600 text-white rounded-full">
                             Important
