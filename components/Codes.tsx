@@ -81,7 +81,7 @@ export default function Codes() {
         <p className="text-center text-lg mb-8 text-gray-400">
           Search and explore codes here...
           <br />
-          Made with ❤️ By Ajay
+          Made with ❤️ by Ajay and contributed with 🔥 by Prasanna
         </p>
         <div className="text-center mb-8">
           <Link
