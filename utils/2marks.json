@@ -7,17 +7,17 @@
   "2": {
     "question": "Define recursion.",
     "explanation": "Recursion is a programming technique where a function calls itself to solve a problem. The function continues to call itself with a slightly different input until it reaches a base case, at which point the function stops calling itself and returns the final result.",
-    "code": "```c\n#include <stdio.h>\n\nint factorial(int n) {\n    if (n == 0) return 1;\n    else return n * factorial(n - 1);\n}\n\nint main() {\n    int number = 5;\n    printf(\"Factorial of %d is %d\\n\", number, factorial(number));\n    return 0;\n}\n```"
+    "code": ""
   },
   "3": {
     "question": "Write short notes on 'enum'.",
     "explanation": "An 'enum' (enumeration) is a user-defined data type in programming that allows you to define a set of named constants. It is used to represent a fixed set of values, such as the days of the week, the months of the year, or the colors of a traffic light.",
-    "code": "```c\nenum Color {\n    RED,\n    GREEN,\n    BLUE\n};\n\nint main() {\n    enum Color favoriteColor;\n    favoriteColor = GREEN;\n    if (favoriteColor == GREEN) {\n        printf(\"Green is selected.\\n\");\n    }\n    return 0;\n}\n```"
+    "code": ""
   },
   "4": {
     "question": "What is the role of pointers in call by reference?",
     "explanation": "In call by reference, the function receives the memory address of the variable instead of the value. Pointers are used to pass the memory address of the variable to the function, allowing the function to directly modify the original variable.",
-    "code": "```c\n#include <stdio.h>\n\nvoid increment(int *num) {\n    (*num)++;\n}\n\nint main() {\n    int a = 5;\n    printf(\"Before: %d\\n\", a);\n    increment(&a);\n    printf(\"After: %d\\n\", a);\n    return 0;\n}\n```"
+    "code": ""
   },
   "5": {
     "question": "List the advantages of linked list over arrays.",
@@ -52,22 +52,22 @@
   "11": {
     "question": "What is recursive function?",
     "explanation": "A recursive function is a function that calls itself to solve a problem. It continues to call itself with a slightly different input until it reaches a base case, at which point the function stops calling itself and returns the final result.",
-    "code": "```c\n#include <stdio.h>\n\nint fibonacci(int n) {\n    if (n <= 1)\n        return n;\n    else\n        return fibonacci(n-1) + fibonacci(n-2);\n}\n\nint main() {\n    int num = 5;\n    printf(\"Fibonacci of %d is %d\\n\", num, fibonacci(num));\n    return 0;\n}\n```"
+    "code": ""
   },
   "12": {
     "question": "When is the ternary operator used?",
     "explanation": "The ternary operator (also known as the conditional operator) is used to provide a concise way of making simple if-else decisions in a single line of code. It is often used as a shorthand for an if-else statement.",
-    "code": "```c\n#include <stdio.h>\n\nint main() {\n    int a = 10, b = 20;\n    int max = (a > b) ? a : b;\n    printf(\"Maximum value is %d\\n\", max);\n    return 0;\n}\n```"
+    "code": ""
   },
   "13": {
     "question": "State the usage of the union in C.",
     "explanation": "In C, a union is a user-defined data type that allows multiple variables of different data types to share the same memory location. This is useful when you need to store different types of data in the same space, such as when working with low-level hardware or data structures.",
-    "code": "```c\n#include <stdio.h>\n\nunion Data {\n    int i;\n    float f;\n    char str[20];\n};\n\nint main() {\n    union Data data;\n\n    data.i = 10;\n    printf(\"data.i: %d\\n\", data.i);\n\n    data.f = 220.5;\n    printf(\"data.f: %.1f\\n\", data.f);\n\n    strcpy(data.str, \"Hello\");\n    printf(\"data.str: %s\\n\", data.str);\n\n    return 0;\n}\n```"
+    "code": ""
   },
   "14": {
     "question": "What are preprocessor directives?",
     "explanation": "Preprocessor directives are special instructions in C and C++ that are processed by the preprocessor before the actual compilation of the program. They are used for tasks such as including header files, defining macros, and conditional compilation.",
-    "code": "```c\n#include <stdio.h>\n#define PI 3.14\n\nint main() {\n    printf(\"Value of PI: %.2f\\n\", PI);\n    return 0;\n}\n```"
+    "code": ""
   },
   "15": {
     "question": "What are Abstract Data Types (ADT)?",
@@ -87,7 +87,7 @@
   "18": {
     "question": "What is an expression tree?",
     "explanation": "An expression tree is a tree-like data structure that represents the hierarchical structure of an arithmetic or logical expression. Each node in the tree represents an operator, and the child nodes represent the operands.",
-    "code": "```c\n// Example of an Expression Tree Node\ntypedef struct Node {\n    char operator;\n    struct Node* left;\n    struct Node* right;\n} Node;\n\n// Function to create a new node\nNode* createNode(char operator) {\n    Node* newNode = (Node*)malloc(sizeof(Node));\n    newNode->operator = operator;\n    newNode->left = newNode->right = NULL;\n    return newNode;\n}\n```"
+    "code": ""
   },
   "19": {
     "question": "What are the limitations of linear search?",
@@ -97,7 +97,7 @@
   "20": {
     "question": "What is the fundamental concept of merge sort?",
     "explanation": "The fundamental concept of merge sort is to divide the input array into smaller subarrays, sort them, and then merge the sorted subarrays back together to form the final sorted array. This divide-and-conquer approach makes merge sort an efficient sorting algorithm with a time complexity of O(n log n).",
-    "code": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\n// Function to merge two subarrays\nvoid merge(int arr[], int l, int m, int r) {\n    int i, j, k;\n    int n1 = m - l + 1;\n    int n2 = r - m;\n\n    // Create temp arrays\n    int L[n1], R[n2];\n\n    // Copy data to temp arrays L[] and R[]\n    for (i = 0; i < n1; i++)\n        L[i] = arr[l + i];\n    for (j = 0; j < n2; j++)\n        R[j] = arr[m + 1 + j];\n\n    // Merge the temp arrays back into arr[l..r]\n    i = 0; // Initial index of first subarray\n    j = 0; // Initial index of second subarray\n    k = l; // Initial index of merged subarray\n    while (i < n1 && j < n2) {\n        if (L[i] <= R[j]) {\n            arr[k++] = L[i++];\n        } else {\n            arr[k++] = R[j++];\n        }\n    }\n\n    // Copy the remaining elements of L[], if there are any\n    while (i < n1)\n        arr[k++] = L[i++];\n\n    // Copy the remaining elements of R[], if there are any\n    while (j < n2)\n        arr[k++] = R[j++];\n}\n\n// Function to implement merge sort\nvoid mergeSort(int arr[], int l, int r) {\n    if (l < r) {\n        int m = l + (r - l) / 2;\n\n        // Sort first and second halves\n        mergeSort(arr, l, m);\n        mergeSort(arr, m + 1, r);\n\n        merge(arr, l, m, r);\n    }\n}\n\nint main() {\n    int arr[] = {12, 11, 13, 5, 6, 7};\n    int arr_size = sizeof(arr)/sizeof(arr[0]);\n\n    printf(\"Given array is \\n\");\n    for(int i = 0; i < arr_size; i++)\n        printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n\n    mergeSort(arr, 0, arr_size - 1);\n\n    printf(\"Sorted array is \\n\");\n    for(int i = 0; i < arr_size; i++)\n        printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n    return 0;\n}\n```"
+    "code": ""
   },
   "21": {
     "question": "What will be the output of the following program #include<stdio.h> int main( - float x = 0.1; if(x == 0.1) printf(\"IF\"); else if(x == 0.1f) printf(\"ELSE IF\"); else printf(\"ELSE\"); }",
@@ -107,17 +107,17 @@
   "22": {
     "question": "Differentiate between prefix and postfix increment operator.",
     "explanation": "The prefix increment operator (++x) first increments the value of x and then returns the incremented value. The postfix increment operator (x++) first returns the current value of x and then increments it.",
-    "code": "```c\n#include <stdio.h>\n\nint main() {\n    int a = 5, b = 5;\n    printf(\"Prefix: ++a = %d\\n\", ++a); // Outputs 6\n    printf(\"Postfix: b++ = %d\\n\", b++); // Outputs 5\n    printf(\"After Postfix: b = %d\\n\", b); // Outputs 6\n    return 0;\n}\n```"
+    "code": ""
   },
   "23": {
     "question": "Define Enumerated Datatype.",
     "explanation": "An Enumerated Datatype (Enum) is a user-defined data type that consists of a set of named constants, called enumerators. Enums are used to create a collection of related constants that can be easily managed and used in a program.",
-    "code": "```c\nenum Weekday {\n    SUNDAY,\n    MONDAY,\n    TUESDAY,\n    WEDNESDAY,\n    THURSDAY,\n    FRIDAY,\n    SATURDAY\n};\n\nint main() {\n    enum Weekday today;\n    today = WEDNESDAY;\n    if (today == WEDNESDAY) {\n        printf(\"Midweek day\\n\");\n    }\n    return 0;\n}\n```"
+    "code": ""
   },
   "24": {
     "question": "State the purpose of Conditional compilation.",
     "explanation": "Conditional compilation is a feature in C and C++ that allows the programmer to selectively include or exclude parts of the code during the compilation process. This is useful for tasks such as providing different versions of the program for different platforms or configurations, enabling or disabling debugging or logging features, and implementing platform-specific code.",
-    "code": "```c\n#include <stdio.h>\n\n#define DEBUG\n\nint main() {\n    printf(\"Program started.\\n\");\n    \n#ifdef DEBUG\n    printf(\"Debug mode is enabled.\\n\");\n#endif\n    \n    // Rest of the code\n    printf(\"Program running.\\n\");\n    \n    return 0;\n}\n```"
+    "code": ""
   },
   "25": {
     "question": "Specify the rules to be followed with respect to Priority Queues during insertion and deletion process.",
@@ -137,42 +137,42 @@
   "28": {
     "question": "Define Separate Chaining.",
     "explanation": "Separate Chaining is a collision resolution technique used in hash tables. In this method, each bucket or slot in the hash table is associated with a linked list. When a collision occurs, the new element is added to the linked list associated with the corresponding bucket.",
-    "code": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define TABLE_SIZE 10\n\ntypedef struct Node {\n    int key;\n    char value[100];\n    struct Node* next;\n} Node;\n\nNode* hashTable[TABLE_SIZE];\n\nint hashFunction(int key) {\n    return key % TABLE_SIZE;\n}\n\nvoid insert(int key, const char* value) {\n    int index = hashFunction(key);\n    Node* newNode = (Node*)malloc(sizeof(Node));\n    newNode->key = key;\n    strcpy(newNode->value, value);\n    newNode->next = hashTable[index];\n    hashTable[index] = newNode;\n}\n\nvoid search(int key) {\n    int index = hashFunction(key);\n    Node* temp = hashTable[index];\n    while (temp) {\n        if (temp->key == key) {\n            printf(\"Found: %s\\n\", temp->value);\n            return;\n        }\n        temp = temp->next;\n    }\n    printf(\"Key %d not found.\\n\", key);\n}\n\nint main() {\n    insert(1, \"One\");\n    insert(11, \"Eleven\");\n    insert(21, \"Twenty-One\");\n    search(11);\n    search(2);\n    return 0;\n}\n```"
+    "code": ""
   },
   "29": {
     "question": "What is the worst-case runtime of insertion sort?",
     "explanation": "The worst-case runtime of insertion sort is O(n^2), where n is the number of elements in the array. This occurs when the array is already sorted in reverse order, and the algorithm needs to move each element one position to the right during the insertion process.",
-    "code": "```c\n#include <stdio.h>\n\nvoid insertionSort(int arr[], int n) {\n    int i, key, j;\n    for (i = 1; i < n; i++) {\n        key = arr[i];\n        j = i - 1;\n\n        /* Move elements of arr[0..i-1], that are greater than key,\n           to one position ahead of their current position */\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j];\n            j = j - 1;\n        }\n        arr[j + 1] = key;\n    }\n}\n\nint main() {\n    int arr[] = {12, 11, 13, 5, 6};\n    int n = sizeof(arr)/sizeof(arr[0]);\n\n    insertionSort(arr, n);\n\n    printf(\"Sorted array: \\n\");\n    for (int i = 0; i < n; i++)\n        printf(\"%d \", arr[i]);\n    printf(\"\\n\");\n    return 0;\n}\n```"
+    "code": ""
   },
   "30": {
     "question": "What are the disadvantages of linear search?",
     "explanation": "The disadvantages of linear search include:\n- It has a time complexity of O(n), which means the search time increases linearly with the size of the data set.\n- It is not efficient for large data sets, as it requires checking each element one by one.\n- It is not suitable for sorted data, as binary search would be a more efficient alternative.",
-    "code": "```c\n#include <stdio.h>\n\nint linearSearch(int arr[], int n, int key) {\n    for (int i = 0; i < n; i++) {\n        if (arr[i] == key)\n            return i;\n    }\n    return -1;\n}\n\nint main() {\n    int arr[] = {2, 4, 0, 1, 9};\n    int n = sizeof(arr)/sizeof(arr[0]);\n    int key = 1;\n    int result = linearSearch(arr, n, key);\n    if (result != -1)\n        printf(\"Element found at index %d\\n\", result);\n    else\n        printf(\"Element not found\\n\");\n    return 0;\n}\n```"
+    "code": ""
   },
   "31": {
     "question": "What are the types of conditional statements in C?",
     "explanation": "The types of conditional statements in C include:\n- if-else\n- switch-case\n- ternary operator",
-    "code": "```c\n#include <stdio.h>\n\nint main() {\n    int num = 10;\n\n    // if-else statement\n    if (num > 0) {\n        printf(\"Positive number\\n\");\n    } else {\n        printf(\"Non-positive number\\n\");\n    }\n\n    // switch-case statement\n    switch (num) {\n        case 10:\n            printf(\"Number is 10\\n\");\n            break;\n        case 20:\n            printf(\"Number is 20\\n\");\n            break;\n        default:\n            printf(\"Number is neither 10 nor 20\\n\");\n    }\n\n    // ternary operator\n    char *result = (num % 2 == 0) ? \"Even\" : \"Odd\";\n    printf(\"%s number\\n\", result);\n\n    return 0;\n}\n```"
+    "code": ""
   },
   "32": {
     "question": "What is the output of the following C program?",
-    "explanation": "```c\n#include <stdio.h>\n#define m 5 + 5\nconst int n = 5 + 5;\nvoid main() {\n    int a = 0, b = 0;\n    a = m * m;\n    b = n * n;\n    printf(\"%d %d\\n\", a, b);\n}\n```\n\nThe output of the program will be:\n\n100 100",
+    "explanation": "The output of the program will be:\n\n100 100",
     "code": ""
   },
   "33": {
     "question": "What are Preprocessor directives in C?",
     "explanation": "Preprocessor directives in C are instructions that are processed by the preprocessor before the actual compilation of the program. Examples include:\n- #include: to include header files\n- #define: to define macros\n- #ifdef, #ifndef, #endif: for conditional compilation",
-    "code": "```c\n#include <stdio.h>\n#define MAX 100\n\nint main() {\n#ifdef MAX\n    printf(\"MAX is defined as %d\\n\", MAX);\n#endif\n#ifndef MIN\n    printf(\"MIN is not defined.\\n\");\n#endif\n    return 0;\n}\n```"
+    "code": ""
   },
   "34": {
     "question": "What will be the value of j for the below-mentioned values of i?",
     "explanation": "In the given switch statement, the value of `j` is determined based on the value of `i`. Here's the breakdown for different values of `i`:",
-    "code": "```c\n#include <stdio.h>\n\nint main() {\n    int i, j;\n\n    // Case 1: i = 2\n    i = 2;\n    switch (i) {\n        case 2: i = i * i;\n        case 4: i = i * i;\n        default: i = i * i;\n                break;\n        case 16: i = i * i;\n                j = i;\n    }\n    printf(\"For i = 2, j = %d\\n\", j); // j = 16\n\n    // Case 2: i = 16\n    i = 16;\n    switch (i) {\n        case 2: i = i * i;\n        case 4: i = i * i;\n        default: i = i * i;\n                break;\n        case 16: i = i * i;\n                j = i;\n    }\n    printf(\"For i = 16, j = %d\\n\", j); // j = 256\n\n    return 0;\n}\n```"
+    "code": ""
   },
   "35": {
     "question": "What is ADT? Give example.",
     "explanation": "ADT stands for Abstract Data Type. It is a data type that is defined by its behavior (the operations that can be performed on it) rather than its implementation. An example of an ADT is a stack, which provides operations like push, pop, and peek.",
-    "code": "```c\n#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct Stack {\n    int data;\n    struct Stack* next;\n} Stack;\n\nvoid push(Stack** top, int value) {\n    Stack* newNode = (Stack*)malloc(sizeof(Stack));\n    newNode->data = value;\n    newNode->next = *top;\n    *top = newNode;\n}\n\nint pop(Stack** top) {\n    if (*top == NULL) {\n        printf(\"Stack Underflow\\n\");\n        return -1;\n    }\n    int value = (*top)->data;\n    Stack* temp = *top;\n    *top = (*top)->next;\n    free(temp);\n    return value;\n}\n\nint main() {\n    Stack* top = NULL;\n    push(&top, 10);\n    push(&top, 20);\n    push(&top, 30);\n\n    printf(\"Popped: %d\\n\", pop(&top)); // Popped: 30\n    printf(\"Popped: %d\\n\", pop(&top)); // Popped: 20\n    printf(\"Popped: %d\\n\", pop(&top)); // Popped: 10\n    printf(\"Popped: %d\\n\", pop(&top)); // Stack Underflow\n\n    return 0;\n}\n```"
+    "code": ""
   },
   "36": {
     "question": "Write the values returned by FRONT for the sequence of operations above.",
@@ -182,7 +182,7 @@
   "37": {
     "question": "Define separate chaining.",
     "explanation": "Separate chaining is a collision resolution technique used in hash tables. In this method, each bucket or slot in the hash table is associated with a linked list. When a collision occurs, the new element is added to the linked list associated with the corresponding bucket.",
-    "code": "```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define TABLE_SIZE 10\n\ntypedef struct Node {\n    int key;\n    char value[100];\n    struct Node* next;\n} Node;\n\nNode* hashTable[TABLE_SIZE];\n\nint hashFunction(int key) {\n    return key % TABLE_SIZE;\n}\n\nvoid insert(int key, const char* value) {\n    int index = hashFunction(key);\n    Node* newNode = (Node*)malloc(sizeof(Node));\n    newNode->key = key;\n    strcpy(newNode->value, value);\n    newNode->next = hashTable[index];\n    hashTable[index] = newNode;\n}\n\nvoid search(int key) {\n    int index = hashFunction(key);\n    Node* temp = hashTable[index];\n    while (temp) {\n        if (temp->key == key) {\n            printf(\"Found: %s\\n\", temp->value);\n            return;\n        }\n        temp = temp->next;\n    }\n    printf(\"Key %d not found.\\n\", key);\n}\n\nint main() {\n    insert(1, \"One\");\n    insert(11, \"Eleven\");\n    insert(21, \"Twenty-One\");\n    search(11);\n    search(2);\n    return 0;\n}\n```"
+    "code": ""
   },
   "38": {
     "question": "What are the traversals of the following tree?",
@@ -192,11 +192,11 @@
   "39": {
     "question": "Why is linear search inefficient compared to binary search?",
     "explanation": "Linear search is highly inefficient compared to binary search when the data is sorted. Binary search has a time complexity of O(log n), while linear search has a time complexity of O(n), making it much slower for large datasets.",
-    "code": "```c\n#include <stdio.h>\n\nint binarySearch(int arr[], int left, int right, int key) {\n    while (left <= right) {\n        int mid = left + (right - left) / 2;\n        if (arr[mid] == key)\n            return mid;\n        if (arr[mid] < key)\n            left = mid + 1;\n        else\n            right = mid - 1;\n    }\n    return -1;\n}\n\nint main() {\n    int arr[] = {2, 4, 6, 8, 10, 12, 14};\n    int n = sizeof(arr)/sizeof(arr[0]);\n    int key = 10;\n    int result = binarySearch(arr, 0, n-1, key);\n    if (result != -1)\n        printf(\"Element found at index %d\\n\", result);\n    else\n        printf(\"Element not found\\n\");\n    return 0;\n}\n```"
+    "code": ""
   },
   "40": {
     "question": "Give an example of max heap and min heap.",
-    "explanation": "A max heap is a binary tree where the value of each node is greater than or equal to the values of its children. A min heap is a binary tree where the value of each node is less than or equal to the values of its children.\n\nFor example, a max heap containing the values [10, 8, 6, 4, 2] would have the following structure:\n    10\n   /  \\\\\n  8    6\n / \\\\\n4   2\n\nA min heap containing the same values would have the following structure:\n    2\n   / \\\\\n  4   6\n / \\\\\n8   10\n",
+    "explanation": "A max heap is a binary tree where the value of each node is greater than or equal to the values of its children. A min heap is a binary tree where the value of each node is less than or equal to the values of its children.\n\nFor example, a max heap containing the values [10, 8, 6, 4, 2] would have the following structure:\n    10\n   /  \\\n  8    6\n / \\ \n4   2\n\nA min heap containing the same values would have the following structure:\n    2\n   / \\\n  4   6\n / \\ \n8   10",
     "code": ""
   }
 }
