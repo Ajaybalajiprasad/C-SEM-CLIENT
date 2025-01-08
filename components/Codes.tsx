@@ -81,7 +81,7 @@ export default function Codes() {
         <p className="text-center text-lg mb-8 text-gray-400">
           Search and explore codes here...
           <br />
-          Made with ❤️ by Ajay and contributed with 🔥 by Prasanna
+          Made with ❤️ by Ajay contributed with 🔥 by Prasanna
         </p>
         <div className="text-center mb-8">
           <Link
@@ -90,6 +90,13 @@ export default function Codes() {
                        shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75"
           >
             Go to Important Topics
+          </Link>
+          <Link
+            href="/twoMarks"
+            className="inline-block px-6 py-3 bg-green-600 text-white font-semibold rounded-lg 
+               shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 ml-4"
+          >
+            Two Marks
           </Link>
         </div>
         {/* Sticky search bar */}

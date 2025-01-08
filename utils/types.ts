@@ -36,3 +36,13 @@ export interface ChecklistItem {
   export interface Answers {
     [key: number]: string;
   }
+  
+  export interface TwoMarkQuestion {
+    question: string;
+    explanation: string;
+    code: string;
+  }
+  
+  export interface TwoMarks {
+    [key: number]: TwoMarkQuestion;
+  }
