@@ -120,7 +120,7 @@ const CheckList: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-gray-800 rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold mb-6 text-indigo-400">Technical Interview Preparation Checklist</h2>
+      <h2 className="text-3xl font-bold mb-6 text-indigo-400">Important Topics</h2>
       
       <div className="mb-6">
         <label className="inline-flex items-center">
